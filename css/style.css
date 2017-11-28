@@ -1,4 +1,9 @@
 /* The Modal (background) */
+body {
+    background: #3b3849;
+    color: #fff;
+}
+
 #other {
     display: flex;
     float: left;

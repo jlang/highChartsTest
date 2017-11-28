@@ -23,13 +23,18 @@ function selectColumn(){
   Highcharts.chart({
     chart: {
         renderTo: "chart",
+        backgroundColor: "#3b3849",
+        plotBorderColor: "#000",
+        borderColor: "#000",
         plotBackgroundColor: null,
-        plotBorderWidth: null,
         plotShadow: false,
         type: 'pie'
     },
     title: {
-        text: 'Tickets by Category'
+        text: 'Tickets by Category',
+        style: {
+            color: "#eee"
+        }
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -42,7 +47,7 @@ function selectColumn(){
                 enabled: true,
                 format: '<b>{point.name}</b>: {point.percentage:.1f} %',
                 style: {
-                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    color: '#eee'
                 }
             }
         },
@@ -52,6 +57,9 @@ function selectColumn(){
                     click: showTickets
                 }
             }
+        },
+        line: {
+            color: "#000"
         }
     },
     series: [{
@@ -97,10 +105,16 @@ $( "#listDialog" ).hide();
 
 options = Highcharts.chart('container', {
     chart: {
-        type: 'column'
+        type: 'column',
+        backgroundColor: "#3b3849",
+        plotBorderColor: "#000",
+        borderColor: "#000"
     },
     title: {
-        text: 'Ticket Tracker'
+        text: 'Ticket Tracker',
+        style: {
+            color: "#fff"
+        }
     },
     xAxis: {
         "type": "datetime",
@@ -108,21 +122,38 @@ options = Highcharts.chart('container', {
            day: '%d %b %Y'    //ex- 01 Jan 2016
         }, 
         title: {
-          text: "Time"
+          text: "Time",
+          style: {
+            color: "grey"
+            }
+        },
+        labels: {
+            style: {
+                color: "#eee"
+            }
         }
     },
     yAxis: {
         min: 0,
         title: {
-            text: 'Number of Tickets'
+            text: 'Number of Tickets',
+            style: {
+                color: "grey"
+            }
         },
         stackLabels: {
             enabled: true,
             style: {
                 fontWeight: 'bold',
-                color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                color: '#fff'
             }
-        }
+        },
+        labels: {
+            style: {
+                color: "#eee"
+            }
+        },
+        gridLineColor: "#000",
     },
     legend: {
         align: 'right',
@@ -130,13 +161,15 @@ options = Highcharts.chart('container', {
         verticalAlign: 'top',
         y: 25,
         floating: true,
-        backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+        backgroundColor: "#000",
         borderColor: '#CCC',
-        borderWidth: 1,
-        shadow: false
+        borderWidth: 0,
+        shadow: false,
+        itemStyle: {
+                color: "#eee"
+        }
     },
     tooltip: {
-        headerFormat: '<b>Content</b><br/>',
         pointFormat: '<b>{series.name}<b>: {point.y}<br/>Total: {point.stackTotal}'
     },
     plotOptions: {
@@ -144,8 +177,9 @@ options = Highcharts.chart('container', {
             stacking: 'normal',
             dataLabels: {
                 enabled: true,
-                color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
-            }
+                color: 'white'
+            },
+            borderColor: null
         }
     },
     series: [{
@@ -153,7 +187,7 @@ options = Highcharts.chart('container', {
         data: [5, 3, 4, 7, 2],
         pointStart: Date.UTC(2017, 0, 1),
         pointInterval: 24 * 3600 * 1000, // one day
-        color: "#e64927",
+        color: "#c6584b",
         point: {
           events: {
             click: selectColumn
@@ -165,7 +199,7 @@ options = Highcharts.chart('container', {
         data: [2, 2, 3, 2, 1],
         pointStart: Date.UTC(2017, 0, 1),
         pointInterval: 24 * 3600 * 1000,
-        color: "#f9ab16",
+        color: "#b45bff",
         point: {
           events: {
             click: selectColumn
@@ -176,7 +210,7 @@ options = Highcharts.chart('container', {
         data: [3, 4, 4, 2, 5],
         pointStart: Date.UTC(2017, 0, 1),
         pointInterval: 24 * 3600 * 1000, 
-        color: "#009d7e",
+        color: "#3de6df",
         point: {
           events: {
             click: selectColumn
@@ -187,7 +221,7 @@ options = Highcharts.chart('container', {
         data: [3, 4, 4, 2, 5],
         pointStart: Date.UTC(2017, 0, 1),
         pointInterval: 24 * 3600 * 1000,
-        color: "#3e2e85",
+        color: "#3f9fff",
         point: {
           events: {
             click: selectColumn
@@ -196,6 +230,7 @@ options = Highcharts.chart('container', {
     }]
 
 });
-
+options.xAxis.labels.style.color = "#000";
+options.labels.style.color = "#fff";
 });
 
